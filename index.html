@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sus Cookies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="brand">
+    <span class="brand-logo">🍰</span>
+    <div>
+      <h1>Sus Cookies</h1>
+      <p>Katalog Kue Premium</p>
+    </div>
+  </div>
+  <button class="cart-icon" onclick="toggleCart()">
+    🛒 <span id="cart-count">0</span>
+  </button>
+</header>
+
+<section class="hero animate">
+  <div class="hero-body">
+    <span class="eyebrow">Fresh setiap hari</span>
+    <h2>Rasakan Kelezatan Kue yang Lembut dan Manis</h2>
+    <p>Koleksi kue kami dibuat dengan bahan premium, topping kreatif, dan tekstur yang meleleh di mulut.</p>
+    <div class="hero-actions">
+      <a href="#product-section" class="btn btn-primary">Lihat Menu</a>
+      <button class="btn btn-secondary" onclick="toggleCart()">Buka Keranjang</button>
+    </div>
+  </div>
+</section>
+
+<section class="features animate delay-1">
+  <article class="feature-card">
+    <h3>Rasa Otentik</h3>
+    <p>Resep klasik, bahan premium, dan rasa yang bikin nagih.</p>
+  </article>
+  <article class="feature-card">
+    <h3>Packaging Stylish</h3>
+    <p>Kemasannya elegan, cocok untuk kado atau momen spesial.</p>
+  </article>
+  <article class="feature-card">
+    <h3>Pengiriman Cepat</h3>
+    <p>Dibuat setiap hari dan dikirim cepat ke alamat Anda.</p>
+  </article>
+</section>
+
+<main>
+  <div class="section-header animate delay-2" id="product-section">
+    <h2>Menu Terlaris</h2>
+    <p>Pilih kue favoritmu dengan sentuhan manis yang unik.</p>
+  </div>
+  <div class="container animate delay-3" id="product-list"></div>
+</main>
+
+<section class="recommended animate delay-3">
+  <div class="section-header" id="recommended-section">
+    <h2>Rekomendasi Spesial</h2>
+    <p>Tambahan pilihan kue yang juga patut dicoba selain terlaris.</p>
+  </div>
+  <div class="container recommended-container" id="recommended-list"></div>
+</section>
+
+<aside class="cart" id="cart">
+  <div class="cart-header">
+    <h3>Keranjang</h3>
+    <button class="close-cart" onclick="toggleCart()">×</button>
+  </div>
+  <div id="cart-items" class="cart-items"></div>
+  <div class="cart-footer">
+    <p class="cart-total">Total: <strong>Rp <span id="total">0</span></strong></p>
+    <button onclick="checkout()" class="btn btn-primary checkout-btn">Checkout</button>
+  </div>
+</aside>
+
+<div class="modal" id="customer-modal">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeCustomerModal()">×</button>
+    <h3>Data Pengiriman</h3>
+    <p class="modal-subtitle">Isi data berikut untuk melanjutkan pesanan</p>
+    <form id="customer-form" onsubmit="proceedToPayment(event)">
+      <div class="form-group">
+        <label for="customer-name">Nama Lengkap</label>
+        <input type="text" id="customer-name" placeholder="Masukkan nama lengkap" required />
+      </div>
+      <div class="form-group">
+        <label for="customer-phone">Nomor HP</label>
+        <input type="tel" id="customer-phone" placeholder="08xxxxxxxxxx" pattern="[0-9]{10,13}" required />
+      </div>
+      <div class="form-group">
+        <label for="customer-email">Email</label>
+        <input type="email" id="customer-email" placeholder="email@example.com" required />
+      </div>
+      <div class="form-group">
+        <label for="customer-address">Alamat Lengkap</label>
+        <textarea id="customer-address" placeholder="Jalan, No. Rumah, Kota, Provinsi" rows="3" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="customer-notes">Catatan (Opsional)</label>
+        <textarea id="customer-notes" placeholder="Contoh: Jangan pedas, dll" rows="2"></textarea>
+      </div>
+      <div class="modal-buttons">
+        <button type="submit" class="btn btn-primary">Lanjut ke Pembayaran</button>
+        <button type="button" onclick="closeCustomerModal()" class="btn btn-secondary cancel">Batal</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModal()">×</button>
+    <h3>Metode Pembayaran</h3>
+    <p class="modal-total">Total: <strong>Rp <span id="final-total">0</span></strong></p>
+    <label for="payment-method">Pilih Metode Pembayaran:</label>
+    <select id="payment-method">
+      <option value="bank">Transfer Bank</option>
+      <option value="qris">QRIS</option>
+      <option value="gopay">Gopay</option>
+      <option value="ovo">OVO</option>
+      <option value="dana">Dana</option>
+    </select>
+    <div class="modal-buttons">
+      <button onclick="pay()" class="btn btn-primary">Bayar</button>
+      <button onclick="closeModal()" class="btn btn-secondary cancel">Batal</button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>© 2026 Sus Cookies | Katalog Kue Modern</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
