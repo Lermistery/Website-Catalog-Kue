@@ -1,0 +1,25 @@
+# Environment file
+.env
+
+# Build hasil compile
+dist/
+build/
+
+# Log file
+*.log
+
+# VS Code setting
+.vscode/
+
+# File/folder pribadi
+images/
+kue-kastengel.jpg
+kue-nastar.jpg
+putri-salju.jpg
+lidah-kucing.jpg
+LAPIS-SURABAYA.jpg
+kue-sagu.jpg
+
+# System file
+.DS_Store
+Thumbs.db
